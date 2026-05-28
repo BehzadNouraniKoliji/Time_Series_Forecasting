@@ -13,4 +13,4 @@ A truly leakage-free process would do this inside each rolling fold:
 6. predict
 7. compute RMSE
 
-That is the production-realistic evaluation pipeline. This ensures the validation fold is always treated as "unseen future data," with no statistical information (mean, variance) leaking from it into the preprocessing step, perfectly mirroring how the model would behave on truly new data in production.
+That is the production-realistic evaluation pipeline. This ensures the validation fold is always treated as "unseen future data," with no statistical information (mean, variance) leaking from it into the preprocessing step, perfectly mirroring how the model would behave on truly new data in production. If the scaling step is performed before the rolling-window cross-validation process, then the model is indirectly exposed to statistical information from future data outside the current training window, resulting in data leakage.
